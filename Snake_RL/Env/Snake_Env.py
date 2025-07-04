@@ -162,7 +162,7 @@ class Env:
         dir_d = self.direction == Direction.DOWN
 
         state = [
-            # 危險區判斷
+            # danger
             (dir_r and self.is_collision(point_r)) or
             (dir_l and self.is_collision(point_l)) or
             (dir_u and self.is_collision(point_u)) or
@@ -178,17 +178,17 @@ class Env:
             (dir_r and self.is_collision(point_u)) or
             (dir_l and self.is_collision(point_d)),
 
-            # 移動方向
+            # move direction
             dir_l,
             dir_r,
             dir_u,
             dir_d,
 
-            # 食物位置
-            self.food.x < self.head.x,  # food 在左邊
-            self.food.x > self.head.x,  # food 在右邊
-            self.food.y < self.head.y,  # food 在上面
-            self.food.y > self.head.y   # food 在下面
+            # food location
+            self.food.x < self.head.x,  # food on left
+            self.food.x > self.head.x,  # food on right
+            self.food.y < self.head.y,  # food on top
+            self.food.y > self.head.y   # food on bottom
         ]
 
         return np.array(state, dtype=int)
